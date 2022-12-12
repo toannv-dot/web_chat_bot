@@ -67,8 +67,8 @@ export default function Home() {
             iframedoc[0]?.setAttribute('display', 'none')
             iframedoc[1]?.setAttribute('display', 'none')
             iframedoc[2]?.setAttribute('display', 'none')
-            // document.getElementsByTagName("iframe")['ch-plugin-script-iframe'].contentDocument.getElementByClassName("Layoutstyled__MobileAppLayout-ch-front__sc-19rvneg-2 kGtLCD").setAttribute('padding-top', 0)
-
+            document.getElementsByTagName("iframe")['ch-plugin-script-iframe'].contentDocument.getElementsByClassName("Layoutstyled__MobileAppLayout-ch-front__sc-19rvneg-2 kGtLCD")[0].style.paddingTop = 0
+            // .getElementByClassName("Layoutstyled__MobileAppLayout-ch-front__sc-19rvneg-2 kGtLCD").setAttribute('padding-top', 0)
           }, 1200);
         }
       });
@@ -140,12 +140,12 @@ export default function Home() {
     //   "pluginKey": "d45e05be-644b-452e-bd07-e051299d51bd",
     //   "openChatDirectlyAsPossible": true, //please fill with your plugin key
     //   "mobileMessengerMode": "iframe",
-    //   // "memberId": "member001", //member001
-    //   // "memberHash": "4af89f3dc98067af39828e7c62637f946c434bd0849fc6fae21e8406ea8be071",//
+    //   "memberId": "member001", //member001
+    //   "memberHash": "4af89f3dc98067af39828e7c62637f946c434bd0849fc6fae21e8406ea8be071",//
     //   // "memberId": "member002", //member001
     //   // "memberHash": "05ca1aeb4265fe79efe65c802f49bd962bedd211ce27592ea3b2288698548c07",//
-    //   "memberId": "ztaz31197@gmail.com", //member001
-    //   "memberHash": "4d8f0e60d1bbe7eb77f26981cf3c5f2e814df36d9761d7f7de053ee49e186a66",//
+    //   // "memberId": "ztaz31197@gmail.com", //member001
+    //   // "memberHash": "4d8f0e60d1bbe7eb77f26981cf3c5f2e814df36d9761d7f7de053ee49e186a66",//
     //   "profile": {
     //     // "name": USER_NAME,
     //     // "mobileNumber": "01012345678"
