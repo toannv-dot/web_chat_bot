@@ -57,18 +57,58 @@ export default function Home() {
       window.ChannelIO("boot", settings, async function onBoot(error, user) {
         if (error) {
           console.log({ error });
-          // window.ReactNativeWebView.postMessage(JSON.stringify(error));
         } else {
           // console.log({ user })
           // window.ReactNativeWebView.postMessage(JSON.stringify(user));
           // window.ChannelIO('openChat', "638acaf83cb3e2626730", '');
           window.ChannelIO("openChat", settings.chatId, "");
+          window.ReactNativeWebView.postMessage(
+            JSON.stringify(settings.chatId)
+          );
           // window.ChannelIO('openChat', "6390b563346c31563866", '');
           setTimeout(() => {
-            document.getElementsByTagName("iframe")['ch-plugin-script-iframe'].contentDocument.getElementsByClassName("Layoutstyled__MobileAppLayout-ch-front__sc-19rvneg-2 kGtLCD")[0].style.paddingTop = 0
-            document.getElementsByTagName("iframe")['ch-plugin-script-iframe'].contentDocument.getElementsByClassName("BaseHeaderstyled__BackButtonWrapper-ch-front__sc-aselju-1 eeIupr")[0].style.visibility = "hidden"
-            document.getElementsByTagName("iframe")['ch-plugin-script-iframe'].contentDocument.getElementsByClassName("Buttonsstyled__Button-ch-front__sc-1ym1uvv-0 bHwPlI")[0].style.visibility = "hidden"
-            document.getElementsByTagName("iframe")['ch-plugin-script-iframe'].contentDocument.getElementsByClassName("Buttonsstyled__Button-ch-front__sc-1ym1uvv-0 bHwPlI")[1].style.visibility = "hidden"
+            document
+              .getElementsByTagName("iframe")
+              [
+                "ch-plugin-script-iframe"
+              ].contentDocument.getElementsByClassName(
+                "Layoutstyled__MobileAppLayout-ch-front__sc-19rvneg-2 kGtLCD"
+              )[0].style.paddingTop = 0;
+            document
+              .getElementsByTagName("iframe")
+              [
+                "ch-plugin-script-iframe"
+              ].contentDocument.getElementsByClassName(
+                "Layoutstyled__MobileAppContent-ch-front__sc-19rvneg-3 khYvGR"
+              )[0].style.borderRadius = 0;
+            document
+              .getElementsByTagName("iframe")
+              [
+                "ch-plugin-script-iframe"
+              ].contentDocument.getElementsByClassName(
+                "BaseHeaderstyled__Wrapper-ch-front__sc-aselju-0 ldZhJL Layoutstyled__HeaderLayout-ch-front__sc-19rvneg-6 bkXnnX FixedHeaderstyled__FixedHeader-ch-front__sc-2bbfri-0 gDVRur"
+              )[0].style.backgroundColor = "white";
+            document
+              .getElementsByTagName("iframe")
+              [
+                "ch-plugin-script-iframe"
+              ].contentDocument.getElementsByClassName(
+                "BaseHeaderstyled__BackButtonWrapper-ch-front__sc-aselju-1 eeIupr"
+              )[0].style.visibility = "hidden";
+            document
+              .getElementsByTagName("iframe")
+              [
+                "ch-plugin-script-iframe"
+              ].contentDocument.getElementsByClassName(
+                "Buttonsstyled__Button-ch-front__sc-1ym1uvv-0 bHwPlI"
+              )[0].style.visibility = "hidden";
+            document
+              .getElementsByTagName("iframe")
+              [
+                "ch-plugin-script-iframe"
+              ].contentDocument.getElementsByClassName(
+                "Buttonsstyled__Button-ch-front__sc-1ym1uvv-0 bHwPlI"
+              )[1].style.visibility = "hidden";
           }, 2000);
         }
       });
