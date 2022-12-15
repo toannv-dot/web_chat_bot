@@ -62,11 +62,18 @@ export default function Home() {
           // window.ReactNativeWebView.postMessage(JSON.stringify(user));
           // window.ChannelIO('openChat', "638acaf83cb3e2626730", '');
           window.ChannelIO("openChat", settings.chatId, "");
-          window.ReactNativeWebView.postMessage(
+          window?.ReactNativeWebView?.postMessage(
             JSON.stringify(settings.chatId)
           );
           // window.ChannelIO('openChat', "6390b563346c31563866", '');
           setTimeout(() => {
+            document
+            .getElementsByTagName("iframe")
+            [
+              "ch-plugin-script-iframe"
+            ].contentDocument.getElementsByClassName(
+              "Layoutstyled__MobileAppContent-ch-front__sc-19rvneg-3 khYvGR"
+            )[0].style.borderRadius = 0;
             document
               .getElementsByTagName("iframe")
               [
@@ -74,13 +81,7 @@ export default function Home() {
               ].contentDocument.getElementsByClassName(
                 "Layoutstyled__MobileAppLayout-ch-front__sc-19rvneg-2 kGtLCD"
               )[0].style.paddingTop = 0;
-            document
-              .getElementsByTagName("iframe")
-              [
-                "ch-plugin-script-iframe"
-              ].contentDocument.getElementsByClassName(
-                "Layoutstyled__MobileAppContent-ch-front__sc-19rvneg-3 khYvGR"
-              )[0].style.borderRadius = 0;
+         
             document
               .getElementsByTagName("iframe")
               [
@@ -120,53 +121,6 @@ export default function Home() {
   }
 
   useEffect(() => {
-    // async function getDetailChatBot() {
-    //   try {
-    //     const myDataUser = await axios({
-    //       method: 'GET',
-    //       url: `https://api.channel.io/open/v5/users/@${memberId}`,
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //         Accept: 'application/json',
-    //         'X-Access-Key': '638024635c899333cde9',
-    //         'X-Access-Secret': '7006056e109b1070231e2c5544159239',
-    //       },
-    //     });
-    //     const idUser = await myDataUser;
-    //     console.log('idUser', idUser.data.user.id);
-    //     if (idUser) {
-    //       const responseDataUserChat = await axios({
-    //         method: 'GET',
-    //         url: `https://api.channel.io/open/v5/users/${idUser.data.user.id}/user-chats`,
-    //         headers: {
-    //           'Content-Type': 'application/json',
-    //           Accept: 'application/json',
-    //           'X-Access-Key': '638024635c899333cde9',
-    //           'X-Access-Secret': '7006056e109b1070231e2c5544159239',
-    //         },
-    //       });
-    //       console.log(
-    //         'responseDataUserChat',
-    //         JSON.stringify(responseDataUserChat.data.messages),
-    //       );
-    //       if (responseDataUserChat.data.messages.length > 0) {
-    //         console.log('data', responseDataUserChat.data.messages[0].chatId);
-    //         // setUrl(
-    //         //   `https://ljywn.channel.io/user-chats/${responseDataUserChat.data.messages[0].chatId}?mode=newTab&translate=true`,
-    //         // );
-    //         // location.replace(`https://ljywn.channel.io/user-chats/${idUserChat[0].id}?mode=newTab&translate=true`)
-    //         // document.getElementsByTagName("svg")[0].setAttribute('display', 'none')
-    //       }
-    //     }
-    //   } catch (error) {
-    //     console.log('error', error);
-    //   }
-    // }
-    // setTimeout(() => {
-    //   getDetailChatBot();
-    // }, 100);
-
-    // ztaz31197@gmail.com
     const crypto = require("crypto");
     const secretKey =
       "49064200dcbda42cfd91fe14dad200752d6e2141106a13d84324dd6c85b104c2";
@@ -231,7 +185,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 id="header">Waiting get info user...</h1>
+        {/* <h1 id="header">Waiting get info user...</h1> */}
       </main>
     </div>
   );
