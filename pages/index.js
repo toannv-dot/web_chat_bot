@@ -14,7 +14,7 @@ export default function Home() {
     loadScript() {
       var w = window;
       if (w.ChannelIO) {
-        return (window.console.error || window.console.log || function () {})(
+        return (window.console.error || window.console.log || function () { })(
           "ChannelIO script included twice."
         );
       }
@@ -68,7 +68,7 @@ export default function Home() {
           // window.ChannelIO('openChat', "6390b563346c31563866", '');
           setTimeout(() => {
             document
-            .getElementsByTagName("iframe")
+              .getElementsByTagName("iframe")
             [
               "ch-plugin-script-iframe"
             ].contentDocument.getElementsByClassName(
@@ -76,40 +76,40 @@ export default function Home() {
             )[0].style.borderRadius = 0;
             document
               .getElementsByTagName("iframe")
-              [
-                "ch-plugin-script-iframe"
-              ].contentDocument.getElementsByClassName(
-                "Layoutstyled__MobileAppLayout-ch-front__sc-19rvneg-2 kGtLCD"
-              )[0].style.paddingTop = 0;
-         
+            [
+              "ch-plugin-script-iframe"
+            ].contentDocument.getElementsByClassName(
+              "Layoutstyled__MobileAppLayout-ch-front__sc-19rvneg-2 kGtLCD"
+            )[0].style.paddingTop = 0;
+
             document
               .getElementsByTagName("iframe")
-              [
-                "ch-plugin-script-iframe"
-              ].contentDocument.getElementsByClassName(
-                "BaseHeaderstyled__Wrapper-ch-front__sc-aselju-0 ldZhJL Layoutstyled__HeaderLayout-ch-front__sc-19rvneg-6 bkXnnX FixedHeaderstyled__FixedHeader-ch-front__sc-2bbfri-0 gDVRur"
-              )[0].style.backgroundColor = "white";
+            [
+              "ch-plugin-script-iframe"
+            ].contentDocument.getElementsByClassName(
+              "BaseHeaderstyled__Wrapper-ch-front__sc-aselju-0 ldZhJL Layoutstyled__HeaderLayout-ch-front__sc-19rvneg-6 bkXnnX FixedHeaderstyled__FixedHeader-ch-front__sc-2bbfri-0 gDVRur"
+            )[0].style.backgroundColor = "white";
             document
               .getElementsByTagName("iframe")
-              [
-                "ch-plugin-script-iframe"
-              ].contentDocument.getElementsByClassName(
-                "BaseHeaderstyled__BackButtonWrapper-ch-front__sc-aselju-1 eeIupr"
-              )[0].style.visibility = "hidden";
+            [
+              "ch-plugin-script-iframe"
+            ].contentDocument.getElementsByClassName(
+              "BaseHeaderstyled__BackButtonWrapper-ch-front__sc-aselju-1 eeIupr"
+            )[0].style.visibility = "hidden";
             document
               .getElementsByTagName("iframe")
-              [
-                "ch-plugin-script-iframe"
-              ].contentDocument.getElementsByClassName(
-                "Buttonsstyled__Button-ch-front__sc-1ym1uvv-0 bHwPlI"
-              )[0].style.visibility = "hidden";
+            [
+              "ch-plugin-script-iframe"
+            ].contentDocument.getElementsByClassName(
+              "Buttonsstyled__Button-ch-front__sc-1ym1uvv-0 bHwPlI"
+            )[0].style.visibility = "hidden";
             document
               .getElementsByTagName("iframe")
-              [
-                "ch-plugin-script-iframe"
-              ].contentDocument.getElementsByClassName(
-                "Buttonsstyled__Button-ch-front__sc-1ym1uvv-0 bHwPlI"
-              )[1].style.visibility = "hidden";
+            [
+              "ch-plugin-script-iframe"
+            ].contentDocument.getElementsByClassName(
+              "Buttonsstyled__Button-ch-front__sc-1ym1uvv-0 bHwPlI"
+            )[1].style.visibility = "hidden";
           }, 2000);
         }
       });
@@ -144,6 +144,38 @@ export default function Home() {
     //   },
     // });
     window.addEventListener(
+      "message",
+      async function (event) {
+        console.log("Received post message", event);
+        // alert(event.data)
+        await window.ReactNativeWebView.postMessage(event.data);
+        let data = JSON.parse(event.data);
+        if (data !== undefined && data.email !== undefined) {
+          const hash = await crypto
+            .createHmac("sha256", Buffer.from(secretKey, "hex"))
+            .update(data.email)
+            .digest("hex");
+          channelService.boot({
+            chatId: data.chatId,
+            pluginKey: "d45e05be-644b-452e-bd07-e051299d51bd",
+            openChatDirectlyAsPossible: true, //please fill with your plugin key
+            mobileMessengerMode: "iframe",
+            // "memberId": "member001", //member001
+            // "memberHash": "4af89f3dc98067af39828e7c62637f946c434bd0849fc6fae21e8406ea8be071",//
+            // "memberId": "member002", //member001
+            // "memberHash": "05ca1aeb4265fe79efe65c802f49bd962bedd211ce27592ea3b2288698548c07",//
+            memberId: data.email, //member001
+            memberHash: hash, //
+            profile: {
+              // "name": data.chatId,
+              // "mobileNumber": "01012345678"
+            },
+          });
+        }
+      },
+      false
+    );
+    document.addEventListener(
       "message",
       async function (event) {
         console.log("Received post message", event);
