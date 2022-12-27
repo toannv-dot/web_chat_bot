@@ -65,10 +65,6 @@ export default function Home() {
           window?.ReactNativeWebView?.postMessage(
             JSON.stringify(settings.chatId)
           );
-          document.ChannelIO("openChat", settings.chatId, "");
-          document?.ReactNativeWebView?.postMessage(
-            JSON.stringify(settings.chatId)
-          );
           // window.ChannelIO('openChat', "6390b563346c31563866", '');
           setTimeout(() => {
             document
